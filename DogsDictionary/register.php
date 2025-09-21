@@ -4,12 +4,15 @@
     $username = $password = $password_check ="";
 
      if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = $_POST["id"];
-        $password = $_POST["password"];
-        $password_check = $_POST["passwordCheck"];
-        $name = $_POST["name"];
+        $username = htmlentities($_POST["id"]);
+        $password = htmlentities($_POST["password"]);
+        $password_check = htmlentities($_POST["passwordCheck"]);
+        $name = htmlentities($_POST["name"]);
 
-        $result = $conn->query("SELECT * FROM users WHERE name = '$username'");
+        $stmt = $conn->prepare("SELECT * FROM users WHERE name = ?");
+        $stmt->bind_param('s',$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             echo "<script>alert('이미 사용중인 아이디입니다.'); window.location.replace('/DogsDictionary/register.php');</script>";
             exit;

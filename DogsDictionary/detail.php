@@ -55,7 +55,7 @@
                                 <?php if($_SESSION['user_idx'] == $row['user_id']) {?> 
                                     <div class="reply-actions">
                                         <button class="edit-btn">수정</button>
-                                        <a href="/DogsDictionary/reply_delete.php?reply_id=<?php echo $row['reply_id']; ?>&dog_id=<?php echo $id; ?>">삭제</a>
+                                        <a href="/DogsDictionary/includes/reply_delete.php?reply_id=<?php echo $row['reply_id']; ?>&dog_id=<?php echo $id; ?>">삭제</a>
                                     </div>
                                 <?php } ?>
                             </div>
@@ -64,7 +64,7 @@
                 ?>
                 
             </div>
-            <form action="/DogsDictionary/reply_add.php" method="POST">
+            <form action="/DogsDictionary/includes/reply_add.php" method="POST">
                 <input type="hidden" name="dog_id" value="<?php echo $id; ?>">
                 <textarea name="content" rows="4" cols="50" placeholder="댓글을 입력하세요..." required></textarea>
                 <br>
@@ -93,11 +93,14 @@
                     const actionsDiv = document.createElement('div');
                     const saveBtn = document.createElement('button');
                     saveBtn.textContent = '저장';
-                    saveBtn.style.marginTop = '8px';
 
                     const cancelBtn = document.createElement('button');
                     cancelBtn.textContent = '취소';
-                    cancelBtn.style.marginTop = '8px';
+
+                    // 클래스 부여 (스타일 적용 대상)
+                    actionsDiv.className = 'reply-edit-actions';
+                    saveBtn.classList.add('save-btn');
+                    cancelBtn.classList.add('cancel-btn');
 
                     contentDiv.style.display = 'none';
                     btn.style.display = 'none';
@@ -111,7 +114,7 @@
                     saveBtn.addEventListener('click', function() {
                         const form = document.createElement('form');
                         form.method = 'POST';
-                        form.action = '/DogsDictionary/reply_update.php';
+                        form.action = '/DogsDictionary/includes/reply_update.php';
 
                         const idInput = document.createElement('input');
                         idInput.type = 'hidden';

@@ -2,7 +2,9 @@
     text-align: center;
     align-items: center;
     width: 100%;
-    padding: 0 200px;
+    padding: 0 20px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .List table{
@@ -10,63 +12,167 @@
     width: 100%;
     border-radius: 15px;
     padding: 15px;
-    box-shadow: 1px 1px 1px 1px rgb(0,0,0,0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     margin-bottom: 30px;
     font-family: "Noto Sans KR", sans-serif;
+    background: #FFFFFF;
+    overflow: hidden;
+    table-layout: fixed;
 }
 
 .List table th {
-    background-color: #1ABC9C;
-    color: #F5F7FA;
-    border: 1px solid black;
+    background: linear-gradient(135deg, #D2691E, #FF8C00);
+    color: #FFF8DC;
+    border: 1px solid #CD853F;
+    padding: 15px 5px;
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 600;
 }
 
 .List table td {
-    font-size: 17px;
+    font-size: clamp(13px, 1.8vw, 17px);
     font-weight: 500;
-    padding: 5px;
+    padding: 15px 5px;
+    border-bottom: 1px solid #F5DEB3;
+    color: #654321;
+    word-wrap: break-word;
+}
+
+.List table tr:hover {
+    background-color: #FFF8DC;
+    transition: background-color 0.3s ease;
 }
 
 .List table td a {
-    display: block;
-    width: 100px;
+    display: inline-block;
+    width: 100%;
+    max-width: 120px;
     height: 40px;
-    background-color: #1ABC9C;
+    background: linear-gradient(135deg, #FF8C00, #FFA500);
     border: none;
-    color: white;
-    border-radius: 10px;
+    color: #FFF8DC;
+    border-radius: 20px;
     cursor: pointer;
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: clamp(12px, 1.5vw, 16px);
     line-height: 40px;
-    margin-left: 35px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    margin: 0 auto;
+}
+
+.List table td a:hover {
+    background: linear-gradient(135deg, #FF7F50, #FF6347);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
 .List table td img {
-    width: 130px;
+    width: 100%;
+    max-width: 130px;
     height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
 
 .paging {
     text-align: center;
-    padding-bottom: 50px;
+    padding-bottom: 80px;
 }
 
 .pager {
     display: flex;
     justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 0 10px;
 }
 
 .pager a {
-    background-color: #1ABC9C;
-    color: white;
+    background: linear-gradient(135deg, #D2691E, #CD853F);
+    color: #FFF8DC;
     display: block;
-    width: 50px;
+    min-width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: clamp(12px, 1.5vw, 14px);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
 .pager a:hover {
-    color: aquamarine;
+    background: linear-gradient(135deg, #FF8C00, #FFA500);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* 태블릿 */
+@media screen and (max-width: 768px) {
+    .List {
+        padding: 0 10px;
+    }
+    
+    .List table {
+        padding: 10px;
+    }
+    
+    .List table th,
+    .List table td {
+        padding: 10px 3px;
+    }
+    
+    .List table td img {
+        max-width: 80px;
+        height: 60px;
+    }
+    
+    .List table td a {
+        max-width: 90px;
+        height: 35px;
+        line-height: 35px;
+    }
+}
+
+/* 모바일 */
+@media screen and (max-width: 480px) {
+    .List {
+        padding: 0 5px;
+    }
+    
+    .List table {
+        padding: 8px;
+        font-size: 12px;
+    }
+    
+    .List table th,
+    .List table td {
+        padding: 8px 2px;
+    }
+    
+    .List table td img {
+        max-width: 60px;
+        height: 45px;
+    }
+    
+    .List table td a {
+        max-width: 70px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 15px;
+    }
+    
+    .pager a {
+        min-width: 35px;
+        height: 35px;
+        line-height: 35px;
+        padding: 0 8px;
+    }
 }
 
 
